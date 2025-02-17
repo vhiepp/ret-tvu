@@ -137,6 +137,19 @@ const About = () => {
         <h1> Keynote Speakers</h1>
       </div>
       <div className="Speakers">
+        {Speakers.length === 0 && (
+          <div>
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "1.4rem",
+                fontWeight: "bold",
+              }}
+            >
+              To be updated
+            </p>
+          </div>
+        )}
         {Speakers.map((speaker, index) => (
           <div className="Speakers_item" key={index}>
             {speaker.scholar !== "" ? (
@@ -163,6 +176,19 @@ const About = () => {
       </div>
 
       <div className="Submission_Guideline">
+        {Submission_Guideline.length === 0 && (
+          <div>
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "1.4rem",
+                fontWeight: "bold",
+              }}
+            >
+              To be updated
+            </p>
+          </div>
+        )}
         {Submission_Guideline.map((item, index) => (
           <div key={index}>
             <div className="Submission_Guideline_header">

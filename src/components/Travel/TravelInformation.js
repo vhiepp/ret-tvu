@@ -34,6 +34,19 @@ const TravelInformation = () => {
             </div>
           );
         })}
+        {TravelInfo.length === 0 && (
+          <div>
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "1.4rem",
+                fontWeight: "bold",
+              }}
+            >
+              To be updated
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="TravelInformation_right">

@@ -25,6 +25,19 @@ const Committee = () => {
     <div className="Committee">
       <div className="Committee-content">
         <div className="Committee_left">
+          {Committees.length === 0 && (
+            <div>
+              <p
+                style={{
+                  textAlign: "center",
+                  fontSize: "1.4rem",
+                  fontWeight: "bold",
+                }}
+              >
+                To be updated
+              </p>
+            </div>
+          )}
           {Committees.map((cm, index) => {
             return (
               <div className="Committee_item" key={index}>
