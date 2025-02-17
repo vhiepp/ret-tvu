@@ -1,0 +1,12 @@
+.mr_2{
+    margin-right: 4px;
+}
+.Registration {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ml_2 {
+    margin-left: 4px;
+}

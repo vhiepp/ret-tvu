@@ -1,0 +1,145 @@
+.Committee-content {
+    display        : flex;
+    justify-content: center;
+    padding        : 30px 30px;
+    gap            : 40px;
+    position       : relative;
+    align-items    : flex-start;
+}
+
+.Committee_right {
+    width   : 400px;
+    position: sticky;
+    top     : 80px;
+}
+
+.Committee_left {
+    flex : 1;
+    width: 100%;
+}
+
+.Slide-img {
+    margin-bottom: 30px;
+    /* object-fit: cover; */
+}
+
+.Committee_item {
+    margin-bottom: 50px;
+    width        : 100%;
+}
+
+.Committee_item>p {
+    white-space    : pre-line;
+    padding-left   : 30px;
+    margin         : 10px 10px;
+    font-size      : 18px;
+    line-height    : 1.5;
+    list-style-type: circle;
+}
+
+.Committee_item div p {
+    padding-left: 30px;
+    margin      : 10px 10px;
+    font-size   : 18px;
+    line-height : 1.5;
+}
+
+
+.Committee_item div ul li {
+
+    margin         : 10px 10px;
+    font-size      : 18px;
+    line-height    : 1.5;
+    list-style-type: disc;
+}
+
+.Committee_item div ul {
+    padding-left: 30px;
+}
+
+.Committee_right .Committee_item>p,
+.TravelInformation_right .Committee_item>p {
+    cursor         : pointer;
+    display        : flex;
+    align-items    : center;
+    justify-content: flex-start;
+    width          : fit-content;
+    gap            : 15px;
+}
+
+.Committee_right .Committee_item>p>i,
+.TravelInformation_right .Committee_item>p>i {
+    opacity   : 0;
+    color     : rgb(0, 58, 159);
+    font-size : 15px;
+    transition: 0.1s;
+}
+
+.Committee_right .Committee_item>p:hover>i {
+    opacity: 1;
+}
+
+.TravelInformation_right .Committee_item>p:hover>i {
+    opacity: 1;
+}
+
+
+
+
+.Committee_item>h2 {
+    color           : #21409A;
+    font-family     : Montserrat;
+    background-color: rgba(224, 224, 224, 0.449);
+    padding         : 14px 10px 14px 20px;
+    font-weight     : 700;
+    font-size       : 20px;
+    text-align      : left;
+    text-transform  : capitalize;
+    position        : relative;
+    width           : 100%;
+    margin-bottom   : 20px;
+    border-left     : 5px solid #ffde17;
+}
+
+/* .Committee_item>h2::after{
+    content: "";
+    height: 2.5px;
+    width: 90%;
+    background-color: #f7961e;
+    position: absolute;
+    left: 1.6rem;
+    left: 0;
+    bottom: 0;
+} */
+
+/* .Committee_item>h2::before{
+    content: "";
+    height: 10px;
+    width: 10px;
+    background-color: #f7961e;
+    position: absolute;
+    right: -1.6rem;
+    bottom: -4px;
+    transform: rotate(45deg);
+} */
+
+/* .Committee_right div h2 {
+    width           : 100%;
+    color           : #fff;
+    border-left     : 1.6rem solid #f7961e;
+    padding         : 1rem 1.6rem;
+    font-weight     : 700;
+    font-size       : 1.5rem;
+    text-align      : left;
+    text-transform  : capitalize;
+}
+
+.Committee_right div p {
+    padding-left: 40px;
+    margin      : 10px 10px;
+    font-size   : 1.1rem;
+} */
+
+.Committee_item>p>a {
+    color: rgb(0, 73, 200);
+}
