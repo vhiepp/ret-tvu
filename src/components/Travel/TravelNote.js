@@ -10,7 +10,7 @@ const TravelNote = () => {
   return (
     <div className="TravelInformation">
       <div className="TravelInformation_left">
-        <div>
+        {/* <div>
           <p
             style={{
               textAlign: "center",
@@ -20,8 +20,8 @@ const TravelNote = () => {
           >
             To be updated
           </p>
-        </div>
-        {/* <div className="TravelInformation_item">
+        </div> */}
+        <div className="TravelInformation_item">
           <h2>Conference Venue</h2>
 
           <p>Administration Building, Campus 1, Tra Vinh University.</p>
@@ -145,7 +145,7 @@ const TravelNote = () => {
             noticed that the invitation letter may help but not guarantee you a
             visa.
           </p>
-        </div> */}
+        </div>
       </div>
 
       <div className="TravelInformation_right">

@@ -7,7 +7,7 @@
     position: sticky;
     top: 0;
     z-index: 99;
-    background-color: #21409A;
+    background-color: #053384;
     gap: 20px;
 
 }
@@ -62,16 +62,36 @@
 }
 
 .Header-link:hover {
-    background-color: #ffde17;
-    color: #21409A;
-    ;
+    background-color: #FFFF00;
+    color: #053384;
+    /* font-weight: 600; */
 }
 
 .Heade-active {
-    background-color: #ffde17;
-    color: #21409A;
-    ;
-    font-weight: 600;
+    background-color: #FFFF00;
+    color: #053384;
+    /* font-weight: 600; */
+    position: relative;
+}
+
+.Heade-active::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    top: -4px;
+    left: 1px;
+    width: 5px;
+    background-color: #007500;
+}
+
+.Heade-active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    top: -4px;
+    left: 6px;
+    width: 5px;
+    background-color: #053384;
 }
 
 .Header-tab {
@@ -117,6 +137,7 @@
     justify-content: flex-start;
     padding: 13px 15px;
     border-bottom: 1px solid rgba(170, 170, 170, 0.263);
+    /* overflow: hidden; */
 }
 
 .Header-group {

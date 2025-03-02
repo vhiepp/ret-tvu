@@ -251,7 +251,7 @@ const Header = () => {
           <div className="Header-left">
             <div className="Header-logo">
               <Link to="/">
-                <Avatar src={logo} size={40} />
+                <Avatar src={logo} size={45} />
               </Link>
               <Link to="/">
                 <div className="Header-name">RET 2025</div>
@@ -261,7 +261,8 @@ const Header = () => {
               <Link
                 to="/about"
                 className={
-                  location.pathname.startsWith("/about")
+                  location.pathname.startsWith("/about") ||
+                  location.pathname === "/"
                     ? "Header-link Heade-active"
                     : "Header-link"
                 }
@@ -503,7 +504,7 @@ const Header = () => {
           <div className="Header-middle">
             <input
               type="text"
-              placeholder="Tìm kiếm thông tin"
+              placeholder="Searching..."
               autoFocus
               value={searchInput}
               onChange={(e) => {

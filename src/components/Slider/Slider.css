@@ -57,13 +57,14 @@
     bottom          : 0;
     left            : 0;
     display         : block;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.555), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.777), rgba(0, 0, 0, 0.222));
     z-index         : 5;
 }
 
 /* Thay đổi kích thước Carousel ở đây */
 .Slide_video_fr {
-    height: 450px;
+    /* height: 450px; */
+    height: 500px;
     position: relative;
 }
 
@@ -78,7 +79,7 @@
 /* ---------------------chỉnh Carousel------------------------------------- */
 
 .modify_color_yellow {
-    color: #ffde17;
+    color: #FFFF00;
 }
 
 .modify_color_red {
@@ -118,6 +119,7 @@
 }
 
 .countdown-number {
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,8 +128,10 @@
     margin-bottom: 5px;
     width: 80px;
     aspect-ratio: 1/1;
-    background-color: #213f9aea;
-    border-bottom: 3px #ffde17 solid;
+    background-color: #053484c9;
+    /* overflow: hidden; */
+    border-bottom: 3px #FFFF00 solid;
+    /* border-bottom-color: linear-gradient(to right, red, blue) 1; */
 }
 
 .countdown-text {
@@ -145,7 +149,7 @@
 
 @media screen and (max-width: 500px) {
     .countdown-number {
-        width: 55px;
+        width: 60px;
         font-size: 25px;
     }
 

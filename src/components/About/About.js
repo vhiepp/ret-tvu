@@ -9,6 +9,7 @@ import {
   getSubmissionGuideline,
   getTopics,
 } from "../../service/DataService";
+import tvuImg from "../imgs/travinhuniversity.jpg";
 
 const About = () => {
   const database = useContext(DataStore);
@@ -87,10 +88,10 @@ const About = () => {
         <div className="About_content_text">
           <h2>About RET</h2>
           <p>{About_content[0]?.text}</p>
-          <Link className="Call-for-papers-link" to="/call-for-papers">
+          {/* <Link className="Call-for-papers-link" to="/call-for-papers">
             <span>Call For Papers</span>
             <i className="fa-solid fa-up-right-from-square"></i>
-          </Link>
+          </Link> */}
         </div>
         <div className="About_content_topics">
           <>
@@ -103,10 +104,7 @@ const About = () => {
           </>
         </div>
         <div className="About_image">
-          <img
-            src="https://reviewedu.net/wp-content/uploads/2021/10/159839653_3724976647552257_3313842260640766887_n.jpg"
-            alt=""
-          />
+          <img src={tvuImg} alt="" />
           <span>Tra Vinh University</span>
         </div>
       </div>
