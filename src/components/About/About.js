@@ -9,7 +9,23 @@ import {
   getSubmissionGuideline,
   getTopics,
 } from "../../service/DataService";
-import tvuImg from "../imgs/travinhuniversity.jpg";
+import tvuImg from "../imgs/slides/0.jpg";
+import tvuImg1 from "../imgs/slides/1.jpg";
+import tvuImg2 from "../imgs/slides/2.jpg";
+import tvuImg3 from "../imgs/slides/3.jpg";
+import tvuImg4 from "../imgs/slides/4.jpg";
+import tvuImg5 from "../imgs/slides/5.jpg";
+// import Swiper JS
+import { Swiper, SwiperSlide } from "swiper/react";
+// import Swiper styles
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import "./styles.css";
+
+// import required modules
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
 const About = () => {
   const database = useContext(DataStore);
@@ -103,10 +119,43 @@ const About = () => {
             ))}
           </>
         </div>
-        <div className="About_image">
-          <img src={tvuImg} alt="" />
-          <span>Tra Vinh University</span>
-        </div>
+        {/* <div className="About_image"> */}
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
+          }}
+          navigation
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination, Autoplay, Navigation]}
+          className="About_image"
+        >
+          <SwiperSlide>
+            <img src={tvuImg} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={tvuImg1} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={tvuImg2} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={tvuImg3} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={tvuImg4} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={tvuImg5} alt="" />
+          </SwiperSlide>
+        </Swiper>
+        {/* <span>Tra Vinh University</span> */}
+        {/* </div> */}
       </div>
 
       <div className="About_Important_Date">

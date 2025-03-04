@@ -5,6 +5,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import logo from "../imgs/logoTVU.png";
+import philosophy from "../imgs/triet-ly.png";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -250,13 +251,20 @@ const Header = () => {
         <>
           <div className="Header-left">
             <div className="Header-logo">
-              <Link to="/">
-                <Avatar src={logo} size={45} />
-              </Link>
+              <div className="Header-logo-frame">
+                {/* <p>RET</p>
+                <p>2025</p> */}
+                {/* <span>TVU</span> */}
+                <Link to="/">
+                  <Avatar src={logo} size={60} />
+                </Link>
+              </div>
               <Link to="/">
                 <div className="Header-name">RET 2025</div>
               </Link>
             </div>
+          </div>
+          <div className="Header-left">
             <div className="Header-tab">
               <Link
                 to="/about"
@@ -473,13 +481,12 @@ const Header = () => {
             </div>
           </div>
           <div className="Header-right-gr">
-            <div
-              className="Header-right"
-              onClick={() => {
-                setOpenSearch(!openSearch);
-              }}
-            >
-              <i className="fa-solid fa-magnifying-glass"></i>
+            <div className="Header-right">
+              <img
+                src={philosophy}
+                className="Header-right-philosophy"
+                alt=""
+              />
             </div>
             <div
               className="Header-mobile-right"

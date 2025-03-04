@@ -3,7 +3,7 @@
     padding: 0 50px;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
+    height: 74px;
     position: sticky;
     top: 0;
     z-index: 99;
@@ -19,12 +19,18 @@
 }
 
 .Header-name {
-    display: none;
+    /* display: none; */
     font-size: 20px;
     font-weight: 700;
     color: white;
     width: fit-content;
-    margin-left: 10px;
+    margin-left: 80px;
+}
+
+@media screen and (max-width: 460px) {
+    .Header-name {
+        display: none;
+    }
 }
 
 .Header-right i, .Header-back i {
@@ -45,8 +51,36 @@
 
 .Header-logo {
     display: flex;
-    margin-right: 30px;
+    margin-right: 50px;
     align-items: center;
+    min-width: 55px;
+    min-height: 100%;
+    position: relative;
+}
+
+.Header-logo-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: -60px;
+    gap: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    padding: 18px 5px 5px 5px;
+    background-color: #FFFF00;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-bottom: 3px solid #007500;
+}
+
+.Header-logo-frame>span {
+    font-size: 22px;
+    font-weight: 700;
+    color: #053384;
+    margin: 0;
+    padding-bottom: 10px;
 }
 
 .Header-link {
@@ -197,6 +231,10 @@
 .Header-mobile-right i {
     color: white;
     font-size: 25px;
+}
+
+.Header-right-philosophy {
+    height: 70px;
 }
 
 .ant-drawer-body {

@@ -130,11 +130,6 @@
 
 /* Tablet */
 @media screen and (max-width: 1100px) {
-
-    .Header-name {
-        display: block !important;
-    }
-
     .Header-left {
         gap: 0;
     }

@@ -16,7 +16,7 @@
 }
 
 .List_Slide_logo {
-    top: 20px;
+    top: 70px;
     z-index: 6;
     position: absolute;
     font-size: 35px;
@@ -83,7 +83,8 @@
 }
 
 .modify_color_red {
-    color: rgb(255, 64, 0);
+    /* color: rgb(255, 64, 0); */
+    color: #007500;
     text-shadow:
         -1px -1px 0 white,
         1px -1px 0 white,
@@ -129,6 +130,7 @@
     width: 80px;
     aspect-ratio: 1/1;
     background-color: #053484c9;
+    /* background-color: #007500d2; */
     /* overflow: hidden; */
     border-bottom: 3px #FFFF00 solid;
     /* border-bottom-color: linear-gradient(to right, red, blue) 1; */
