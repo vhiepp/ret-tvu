@@ -3,12 +3,20 @@ import "./Committee.css";
 import { Carousel } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { DataStore } from "../Database";
-import { getCommittees } from "../../service/DataService";
+import { getActivate, getCommittees } from "../../service/DataService";
 
 const Committee = () => {
   // const Committees = database?.Committees;
 
   const [Committees, setCommittees] = useState([]);
+  const [Activate, setActivate] = useState({});
+
+  const handleGetActivate = async () => {
+    try {
+      const response = await getActivate();
+      setActivate(response.data);
+    } catch (error) {}
+  };
 
   const handleGetCommittees = async () => {
     try {
@@ -18,6 +26,7 @@ const Committee = () => {
   };
 
   useEffect(() => {
+    handleGetActivate();
     handleGetCommittees();
   }, []);
 
@@ -25,8 +34,8 @@ const Committee = () => {
     <div className="Committee">
       <div className="Committee-content">
         <div className="Committee_left">
-          {Committees.length === 0 && (
-            <div>
+          {Committees.length === 0 || !Activate.committee ? (
+            <div style={{ marginBottom: "2rem" }}>
               <p
                 style={{
                   textAlign: "center",
@@ -37,21 +46,22 @@ const Committee = () => {
                 To be updated
               </p>
             </div>
-          )}
-          {Committees.map((cm, index) => {
-            return (
-              <div className="Committee_item" key={index}>
-                <h2>{cm.title}</h2>
-                <div>
-                  <ul>
-                    {cm.content.map((ct, index) => {
-                      return <li>{`${ct}`}</li>;
-                    })}
-                  </ul>
+          ) : (
+            Committees.map((cm, index) => {
+              return (
+                <div className="Committee_item" key={index}>
+                  <h2>{cm.title}</h2>
+                  <div>
+                    <ul>
+                      {cm.content.map((ct, index) => {
+                        return <li>{`${ct}`}</li>;
+                      })}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
         <div className="Committee_right">
           <div className="Committee_item">

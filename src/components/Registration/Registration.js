@@ -1,10 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import { getRegistration } from "../../service/DataService";
+import { getActivate, getRegistration } from "../../service/DataService";
 import { Link } from "react-router-dom";
 import "./Registration.css";
 
 const Registration = () => {
   const [Submission_Guideline, setSubmission_Guideline] = useState([]);
+  const [Activate, setActivate] = useState({});
+
+  const handleGetActivate = async () => {
+    try {
+      const response = await getActivate();
+      setActivate(response.data);
+    } catch (error) {}
+  };
 
   const handleGetRegistration = async () => {
     try {
@@ -17,6 +25,7 @@ const Registration = () => {
   };
 
   useEffect(() => {
+    handleGetActivate();
     handleGetRegistration();
   }, []);
 
@@ -26,7 +35,7 @@ const Registration = () => {
         <h1>Registration</h1>
       </div>
       <div className="Submission_Guideline">
-        {Submission_Guideline.length === 0 && (
+        {Submission_Guideline.length === 0 || !Activate.registration ? (
           <div>
             <p
               style={{
@@ -38,110 +47,111 @@ const Registration = () => {
               To be updated
             </p>
           </div>
+        ) : (
+          Submission_Guideline.map((item, index) => (
+            <div key={index} className="Registration">
+              <div
+                className="Submission_Guideline_header"
+                dangerouslySetInnerHTML={{
+                  __html: item.content,
+                }}
+              />
+
+              <div>
+                <b>
+                  <span>Registration link:</span>
+                </b>
+              </div>
+              <div>
+                <div className="Submission_Guideline_body">
+                  <ul>
+                    <li>
+                      <div>
+                        <span className="mr_2 ml_2">
+                          {item.title_authors_presenters}
+                        </span>
+
+                        <a target="blank" href={item.link_authors_presenters}>
+                          {" "}
+                          Link{" "}
+                          <i className="fa-solid fa-up-right-from-square"></i>{" "}
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <span className="mr_2 ml_2">
+                          {item.title_guests_participants}
+                        </span>
+                        <a target="blank" href={item.link_participants}>
+                          {" "}
+                          Link{" "}
+                          <i className="fa-solid fa-up-right-from-square"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <b>
+                  <span>Due dates:</span>
+                </b>
+              </div>
+              <div>
+                <div className="Submission_Guideline_body">
+                  <ul>
+                    <li>
+                      <div>
+                        <span className="mr_2 ml_2">
+                          {item.title_authors_presenters}
+                        </span>
+                        <b>
+                          <span>{item.due_dates_authors_presenters}</span>
+                        </b>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <span className="mr_2 ml_2">
+                          {item.title_guests_participants}
+                        </span>
+                        <b>
+                          <span>{item.due_dates_guests_participants}</span>
+                        </b>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {/* <div>
+                              <span className="mr_2"> {item.title_authors_presenters}</span>
+                              <span><b>{item.registration_due_date_for_authors_presenters}</b> </span>
+  
+                          </div>
+  
+                          <div>
+                              <span className="mr_2"> {item.title_guests_participants}</span>
+                              <span ><b>{item.registration_due_date_for_distinguished_guests_participants}</b></span>
+                          </div> */}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: item.please_help_us,
+                }}
+              />
+
+              <div>{item.if_you_need}</div>
+
+              <div>{item.we_look_forward}</div>
+
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: item.yours_sincerely,
+                }}
+              />
+            </div>
+          ))
         )}
-        {Submission_Guideline.map((item, index) => (
-          <div key={index} className="Registration">
-            <div
-              className="Submission_Guideline_header"
-              dangerouslySetInnerHTML={{
-                __html: item.content,
-              }}
-            />
-
-            <div>
-              <b>
-                <span>Registration link:</span>
-              </b>
-            </div>
-            <div>
-              <div className="Submission_Guideline_body">
-                <ul>
-                  <li>
-                    <div>
-                      <span className="mr_2 ml_2">
-                        {item.title_authors_presenters}
-                      </span>
-
-                      <a target="blank" href={item.link_authors_presenters}>
-                        {" "}
-                        Link{" "}
-                        <i className="fa-solid fa-up-right-from-square"></i>{" "}
-                      </a>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <span className="mr_2 ml_2">
-                        {item.title_guests_participants}
-                      </span>
-                      <a target="blank" href={item.link_participants}>
-                        {" "}
-                        Link{" "}
-                        <i className="fa-solid fa-up-right-from-square"></i>
-                      </a>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div>
-              <b>
-                <span>Due dates:</span>
-              </b>
-            </div>
-            <div>
-              <div className="Submission_Guideline_body">
-                <ul>
-                  <li>
-                    <div>
-                      <span className="mr_2 ml_2">
-                        {item.title_authors_presenters}
-                      </span>
-                      <b>
-                        <span>{item.due_dates_authors_presenters}</span>
-                      </b>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <span className="mr_2 ml_2">
-                        {item.title_guests_participants}
-                      </span>
-                      <b>
-                        <span>{item.due_dates_guests_participants}</span>
-                      </b>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            {/* <div>
-                            <span className="mr_2"> {item.title_authors_presenters}</span>
-                            <span><b>{item.registration_due_date_for_authors_presenters}</b> </span>
-
-                        </div>
-
-                        <div>
-                            <span className="mr_2"> {item.title_guests_participants}</span>
-                            <span ><b>{item.registration_due_date_for_distinguished_guests_participants}</b></span>
-                        </div> */}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: item.please_help_us,
-              }}
-            />
-
-            <div>{item.if_you_need}</div>
-
-            <div>{item.we_look_forward}</div>
-
-            <div
-              dangerouslySetInnerHTML={{
-                __html: item.yours_sincerely,
-              }}
-            />
-          </div>
-        ))}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import "./Program.css";
 import { Link } from "react-router-dom";
 import { DataStore } from "../Database";
 import {
+  getActivate,
   getConferenceProgram,
   getParallelSession1,
   getParallelSession2,
@@ -16,6 +17,14 @@ const Program = () => {
   const [conferenceProgram, setConferenceProgram] = useState([]);
   const [parallelSession1, setParallelSession1] = useState([]);
   const [parallelSession2, setParallelSession2] = useState([]);
+  const [Activate, setActivate] = useState({});
+
+  const handleGetActivate = async () => {
+    try {
+      const response = await getActivate();
+      setActivate(response.data);
+    } catch (error) {}
+  };
 
   const handleGetParallelSessions = async () => {
     try {
@@ -41,6 +50,7 @@ const Program = () => {
   };
 
   useEffect(() => {
+    handleGetActivate();
     handleGetParallelSessions();
   }, []);
 
@@ -49,10 +59,7 @@ const Program = () => {
       <div className="Submission_Guideline_tital">
         <h1>Conference Program</h1>
       </div>
-      {/* <div>
-                <h2 style={{textAlign: "center", marginTop: "50px"}}>Updating...</h2>
-            </div> */}
-      {conferenceProgram.length === 0 ? (
+      {conferenceProgram.length === 0 || !Activate.program ? (
         <div className="Session_Container">
           <p
             style={{

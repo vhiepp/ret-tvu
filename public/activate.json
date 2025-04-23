@@ -1,0 +1,9 @@
+{
+    "important_dates": true,
+    "keynote_speakers": true,
+    "committee": true,
+    "program": true,
+    "registration": true,
+    "submission": true,
+    "sponsors": true
+}

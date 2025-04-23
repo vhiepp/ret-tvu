@@ -455,6 +455,87 @@ function getTravelInfo($service) {
     // echo "[TravelInfo] Lưu dữ liệu thành công. < br />";    
 }
 
+function getSponsors($service) {
+    $filePath = "sponsors.json";
+    $range = 'Sponsors!A1:Z';
+    // Gửi yêu cầu đọc dữ liệu từ Google Sheet
+    $response = $service->spreadsheets_values->get(spreadsheetId, $range);
+
+    // Lấy dữ liệu
+    $values = $response->getValues();
+
+    $data = [];
+
+    if (empty($values)) {
+        echo "Không có dữ liệu.";
+    } else {
+        $keys = array_shift($values);
+        // Chuyển từng hàng thành dạng key-value
+        foreach ($values as $row) {
+            $data[] = array_combine($keys, array_pad($row, count($keys), null));
+        }
+    }
+    // Lưu dữ liệu vào file JSON
+    file_put_contents($filePath, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    // echo "[Sponsors] Lưu dữ liệu thành công. < br />";    
+}
+
+function getActivate($service) {
+    $filePath = "activate.json";
+    $range = 'Activate!A1:Z';
+    // Gửi yêu cầu đọc dữ liệu từ Google Sheet
+    $response = $service->spreadsheets_values->get(spreadsheetId, $range);
+
+    // Lấy dữ liệu
+    $values = $response->getValues();
+
+    $data = [];
+
+    if (empty($values)) {
+        echo "Không có dữ liệu.";
+    } else {
+        $keys = array_shift($values);
+        echo $keys[0];
+        // Chuyển từng hàng thành dạng key-value và chuyên value thành true nếu là 1 hoặc false nếu là 0
+        foreach ($values as $row) {
+            $data = array_combine($keys, array_pad($row, count($keys), null));
+            foreach ($data as $key => $value) {
+                if ($key != 'index') {
+                    $data[$key] = ($value == 0) ? false : true;
+                }
+            }
+        }
+    }
+    // Lưu dữ liệu vào file JSON
+    file_put_contents($filePath, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    // echo "[Activate] Lưu dữ liệu thành công. < br />";    
+}
+
+function getHistory($service) {
+    $filePath = "history.json";
+    $range = 'History!A1:Z';
+    // Gửi yêu cầu đọc dữ liệu từ Google Sheet
+    $response = $service->spreadsheets_values->get(spreadsheetId, $range);
+
+    // Lấy dữ liệu
+    $values = $response->getValues();
+
+    $data = [];
+
+    if (empty($values)) {
+        echo "Không có dữ liệu.";
+    } else {
+        $keys = array_shift($values);
+        // Chuyển từng hàng thành dạng key-value
+        foreach ($values as $row) {
+            $data[] = array_combine($keys, array_pad($row, count($keys), null));
+        }
+    }
+    // Lưu dữ liệu vào file JSON
+    file_put_contents($filePath, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    // echo "[History] Lưu dữ liệu thành công. < br />";    
+}
+
 session_start();
 
 function ok($service) {
@@ -470,6 +551,10 @@ function ok($service) {
     getSubmissionGuideline($service);
     getTopics($service);
     getTravelInfo($service);
+
+    getSponsors($service);
+    getActivate($service);
+    getHistory($service);
 }
 
 ok($service);

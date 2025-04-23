@@ -1,7 +1,15 @@
 import { axiosInstance } from "./AxiosCofig";
 
+const getActivate = () => {
+  return axiosInstance.get(`/activate.json`);
+};
+
 const getSpeakers = () => {
   return axiosInstance.get(`/speakers.json`);
+};
+
+const getSponsors = () => {
+  return axiosInstance.get(`/sponsors.json`);
 };
 
 const getTravelInfo = () => {
@@ -72,4 +80,6 @@ export {
   getConferenceProgram,
   getParallelSession1,
   getParallelSession2,
+  getSponsors,
+  getActivate,
 };

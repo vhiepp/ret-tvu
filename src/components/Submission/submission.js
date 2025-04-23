@@ -4,12 +4,20 @@ import { useContext, useEffect, useState } from "react";
 import { DataStore } from "../Database";
 import { Link, useLocation } from "react-router-dom";
 import { Avatar } from "antd";
-import { getSubmissionGuideline } from "../../service/DataService";
+import { getActivate, getSubmissionGuideline } from "../../service/DataService";
 
 const Submission = () => {
   const database = useContext(DataStore);
 
   const [Submission_Guideline, setSubmission_Guideline] = useState([]);
+  const [Activate, setActivate] = useState({});
+
+  const handleGetActivate = async () => {
+    try {
+      const response = await getActivate();
+      setActivate(response.data);
+    } catch (error) {}
+  };
 
   function groupDataByTitle(data) {
     return data.reduce((acc, item) => {
@@ -34,6 +42,7 @@ const Submission = () => {
   };
 
   useEffect(() => {
+    handleGetActivate();
     handleGetSubmissionGuideline();
   }, []);
 
@@ -43,7 +52,7 @@ const Submission = () => {
         <h1> Submission Guidelines</h1>
       </div>
       <div className="Submission_Guideline">
-        {Submission_Guideline.length === 0 && (
+        {Submission_Guideline.length === 0 || !Activate.submission ? (
           <div>
             <p
               style={{
@@ -55,31 +64,32 @@ const Submission = () => {
               To be updated
             </p>
           </div>
-        )}
-        {Submission_Guideline.map((item, index) => (
-          <div key={index}>
-            <div className="Submission_Guideline_header">
-              {item.header.map((itemEvent, innerIndex) => (
-                <p
-                  key={innerIndex}
-                  dangerouslySetInnerHTML={{
-                    __html: itemEvent,
-                  }}
-                />
-              ))}
-            </div>
-            <div className="Submission_Guideline_body">
-              <ul>
-                {item.body.map((itemEvent, innerIndex) => (
-                  <li
+        ) : (
+          Submission_Guideline.map((item, index) => (
+            <div key={index}>
+              <div className="Submission_Guideline_header">
+                {item.header.map((itemEvent, innerIndex) => (
+                  <p
                     key={innerIndex}
-                    dangerouslySetInnerHTML={{ __html: itemEvent }}
+                    dangerouslySetInnerHTML={{
+                      __html: itemEvent,
+                    }}
                   />
                 ))}
-              </ul>
+              </div>
+              <div className="Submission_Guideline_body">
+                <ul>
+                  {item.body.map((itemEvent, innerIndex) => (
+                    <li
+                      key={innerIndex}
+                      dangerouslySetInnerHTML={{ __html: itemEvent }}
+                    />
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
